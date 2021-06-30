@@ -1,4 +1,4 @@
-name: example-ngrok-kind-v2
+name: deploy_github_action
 on:
   workflow_dispatch:
 
@@ -11,7 +11,7 @@ jobs:
       - name: Install KubeSphere
         run: |
           kubectl apply -f https://github.com/kubesphere/ks-installer/releases/download/v3.0.0/kubesphere-installer.yaml
-          kubectl apply -f https://github.com/kubesphere/ks-installer/releases/download/v3.0.0/cluster-configuration.yaml          
+        &&  kubectl apply -f https://github.com/kubesphere/ks-installer/releases/download/v3.0.0/cluster-configuration.yaml          
       - name: Expose Port for Kind
         run: |
           export ID=`docker ps | awk '{print $1}' | sed -n '2p'`
